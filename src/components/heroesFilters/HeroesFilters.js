@@ -2,7 +2,7 @@ import {useHttp} from '../../hooks/http.hook';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { addFilters, allFilter, setFilterName} from '../../actions';
+import { addFilters, setFilterName} from '../../actions';
 import { v4 as uuidv4 } from 'uuid';
 import classNames from 'classnames/bind';
 
@@ -17,7 +17,7 @@ import classNames from 'classnames/bind';
 
 const HeroesFilters = () => {
 
-    const {filters, filterName} = useSelector(state => state);
+    const {filters, filterName} = useSelector(state => state.filters);
     const {request} = useHttp();
     const dispatch = useDispatch();
 
@@ -33,7 +33,7 @@ const HeroesFilters = () => {
             const activeClass = classNames({
                 'active': item.name === filterName
             });
-            return <button onClick={() => item.name !== 'all' ? dispatch(setFilterName(item.name)) : dispatch(allFilter())} 
+            return <button onClick={() => dispatch(setFilterName(item.name))} 
                 key={uuidv4()} 
                 className={`${item.className} ${activeClass}`}>{item.name}</button>
         })

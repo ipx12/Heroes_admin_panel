@@ -19,15 +19,9 @@
       "element": "water"
     },
     {
-      "id": "589c1897-cca1-41bb-81b6-22f942787ed4",
-      "name": "Особый",
-      "description": "Все",
-      "element": "all"
-    },
-    {
-      "id": "2123b7e5-7844-4522-9bc8-6ee527ba8312",
-      "name": "Земеля",
-      "description": "Почти нечего",
+      "id": "ffeb18d8-6473-44d0-b475-0756293b13b2",
+      "name": "Денис",
+      "description": "123",
       "element": "earth"
     }
   ],
