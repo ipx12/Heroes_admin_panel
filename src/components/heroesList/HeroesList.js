@@ -2,9 +2,10 @@ import {useHttp} from '../../hooks/http.hook';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { createSelector } from 'reselect'
-import { fetchHeroes} from '../../actions/index';
-import { heroDeleted } from './heroesSlice';
+import { createSelector } from '@reduxjs/toolkit'
+
+import { heroDeleted, fetchHeroes } from './heroesSlice';
+
 import HeroesListItem from "../heroesListItem/HeroesListItem";
 import Spinner from '../spinner/Spinner';
 
@@ -24,22 +25,13 @@ const HeroesList = () => {
         }
     );
 
-    // const filtrerdHeroes = useSelector(state => {
-    //     if (state.filters.filterName === 'all') {
-    //         console.log('render')
-    //         return state.heroes.heroes;
-    //     } else {
-    //         return state.heroes.heroes.filter(item => item.element === state.filters.filterName)
-    //     }
-    // })
-
     const filtrerdHeroes = useSelector(filteredHeroesSelector)
     const {heroesLoadingStatus} = useSelector(state => state.heroes.heroesLoadingStatus);
     const dispatch = useDispatch();
     const {request} = useHttp();
 
     useEffect(() => {
-        dispatch(fetchHeroes(request));
+        dispatch(fetchHeroes());
         // eslint-disable-next-line
     }, []);
 
@@ -60,7 +52,13 @@ const HeroesList = () => {
     if (heroesLoadingStatus === "loading") {
         return <Spinner/>;
     } else if (heroesLoadingStatus === "error") {
-        return <h5 className="text-center mt-5">Ошибка загрузки</h5>
+        console.log(heroesLoadingStatus)
+        return (<CSSTransition
+                    timeout={0}
+                    classNames="hero">
+                    <h5 className="text-center mt-5">Ошибка загрузки</h5>
+                 </CSSTransition>
+        )
     }
 
     const renderHeroesList = (arr) => {
