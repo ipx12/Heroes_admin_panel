@@ -2,7 +2,8 @@ import {useHttp} from '../../hooks/http.hook';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { setFilterName, fetchFilters} from '../../actions';
+import { setFilterName } from './filterSlice'
+import { fetchFilters} from '../../actions';
 import { v4 as uuidv4 } from 'uuid';
 import classNames from 'classnames/bind';
 

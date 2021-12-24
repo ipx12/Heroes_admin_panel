@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { useEffect } from "react";
 import { useState } from "react";
 
-import { addHero, heroesFetchingError } from "../../actions";
+import { addHero, heroesFetchingError } from "../heroesList/heroesSlice";
 
 
 // Задача для этого компонента:
