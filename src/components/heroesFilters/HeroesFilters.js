@@ -2,7 +2,7 @@ import {useHttp} from '../../hooks/http.hook';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { addFilters, setFilterName} from '../../actions';
+import { setFilterName, fetchFilters} from '../../actions';
 import { v4 as uuidv4 } from 'uuid';
 import classNames from 'classnames/bind';
 
@@ -22,9 +22,7 @@ const HeroesFilters = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-
-        request("http://localhost:3001/filters")
-            .then(data => dispatch(addFilters(data)))
+        dispatch(fetchFilters(request));
         // eslint-disable-next-line
     }, []);
 

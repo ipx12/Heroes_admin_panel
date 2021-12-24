@@ -1,50 +1,50 @@
-const initialState = {
-    heroes: [],
-    heroesLoadingStatus: 'idle',
-    filters: [],
-    filterName: 'all'
-}
+// const initialState = {
+//     heroes: [],
+//     heroesLoadingStatus: 'idle',
+//     filters: [],
+//     filterName: 'all'
+// }
 
-const reducer = (state = initialState, action) => {
-    switch (action.type) {
-        case 'HEROES_FETCHING':
-            return {
-                ...state,
-                heroesLoadingStatus: 'loading'
-            }
-        case 'HEROES_FETCHED':
-            return {
-                ...state,
-                heroes: action.payload,
-                heroesLoadingStatus: 'idle'
-            }
-        case 'HEROES_FETCHING_ERROR':
-            return {
-                ...state,
-                heroesLoadingStatus: 'error'
-            }
-        case 'DELETE_HERO':
-              return {
-                  ...state,
-                  heroes: state.heroes.filter(item => item.id !== action.payload)
-              }
-        case 'ADD_HERO':
-            return {
-                ...state,
-                heroes: [...state.heroes, action.payload],
-            }
-        case 'FILTERS_FETCHIMG':
-            return {
-                ...state,
-                filters: action.payload
-            }
-        case 'SET_FILTER_NAME':
-            return {
-                ...state,
-                filterName: action.payload
-            }
-        default: return state
-    }
-}
+// const reducer = (state = initialState, action) => {
+//     switch (action.type) {
+//         case 'HEROES_FETCHING':
+//             return {
+//                 ...state,
+//                 heroesLoadingStatus: 'loading'
+//             }
+//         case 'HEROES_FETCHED':
+//             return {
+//                 ...state,
+//                 heroes: action.payload,
+//                 heroesLoadingStatus: 'idle'
+//             }
+//         case 'HEROES_FETCHING_ERROR':
+//             return {
+//                 ...state,
+//                 heroesLoadingStatus: 'error'
+//             }
+//         case 'DELETE_HERO':
+//               return {
+//                   ...state,
+//                   heroes: state.heroes.filter(item => item.id !== action.payload)
+//               }
+//         case 'ADD_HERO':
+//             return {
+//                 ...state,
+//                 heroes: [...state.heroes, action.payload],
+//             }
+//         case 'FILTERS_FETCHIMG':
+//             return {
+//                 ...state,
+//                 filters: action.payload
+//             }
+//         case 'SET_FILTER_NAME':
+//             return {
+//                 ...state,
+//                 filterName: action.payload
+//             }
+//         default: return state
+//     }
+// }
 
-export default reducer;
+// export default reducer;
