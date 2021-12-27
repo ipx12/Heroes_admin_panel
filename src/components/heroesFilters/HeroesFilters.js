@@ -1,14 +1,17 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import store from '../../store';
 
-import { setFilterName, fetchFilters } from './filterSlice'
+import { setFilterName, fetchFilters, selectAll } from './filterSlice'
 import { v4 as uuidv4 } from 'uuid';
 import classNames from 'classnames/bind';
 
 const HeroesFilters = () => {
 
-    const {filters, filterName} = useSelector(state => state.filters);
+    const {filterName} = useSelector(state => state.filters)
+    const filters = selectAll(store.getState())
     const dispatch = useDispatch();
+
 
     useEffect(() => {
         dispatch(fetchFilters());

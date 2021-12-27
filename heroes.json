@@ -17,38 +17,30 @@
       "name": "Водный герой",
       "description": "Ничего",
       "element": "water"
-    },
-    {
-      "id": "197d59f8-7fd4-483d-8eba-bf8ee53865f2",
-      "name": "Денис",
-      "description": "www",
-      "element": "earth"
-    },
-    {
-      "id": "f0c01497-521d-4a50-b0a3-c8351559e121",
-      "name": "Denis ",
-      "description": "wwww",
-      "element": "water"
     }
   ],
   "filters": [
-    {
+    { "id": "all",
       "name": "all",
       "className": "btn btn-outline-dark"
     },
     {
+      "id": "fire",
       "name": "fire",
       "className": "btn btn-danger"
     },
     {
+      "id": "water",
       "name": "water",
       "className": "btn btn-primary"
     },
     {
+      "id": "wind",
       "name": "wind",
       "className": "btn btn-success"
     },
     {
+      "id": "earth",
       "name": "earth",
       "className": "btn btn-secondary"
     }
