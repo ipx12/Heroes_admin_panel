@@ -20,7 +20,8 @@
     }
   ],
   "filters": [
-    { "id": "all",
+    {
+      "id": "all",
       "name": "all",
       "className": "btn btn-outline-dark"
     },

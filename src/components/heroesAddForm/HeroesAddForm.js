@@ -1,11 +1,11 @@
 import { useHttp } from "../../hooks/http.hook";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from 'uuid';
 import { useEffect } from "react";
 import { useState } from "react";
 
-import { addHero, heroesFetchingError } from "../heroesList/heroesSlice";
+import { useCreateHeroMutation } from "../../api/apiSlice";
+
 
 
 // Задача для этого компонента:
@@ -20,14 +20,15 @@ import { addHero, heroesFetchingError } from "../heroesList/heroesSlice";
 
 const HeroesAddForm = () => {
 
-    const dispatch = useDispatch();
+    const [createHero] = useCreateHeroMutation();
+
     const {request} = useHttp();
     const [elements, setElements] = useState([])
 
     const getElements = () => {
         request(`http://localhost:3001/filters`)
             .then(setElements)
-            .catch(() => dispatch(heroesFetchingError()))
+            .catch(() => new Error('error'));
 
 
     }
@@ -53,8 +54,7 @@ const HeroesAddForm = () => {
             }}
             onSubmit={(values, {resetForm}) => {
                 values.id = uuidv4();
-                dispatch(addHero(values))
-                request(`http://localhost:3001/heroes`, 'POST', JSON.stringify(values))
+                createHero(values).unwrap()
                 setTimeout(() => resetForm({
                     id: '',
                     name: '',
